@@ -1,0 +1,22 @@
+abstract class ApiException implements Exception {
+  final String? message;
+  final String? prefix;
+  final String? url;
+
+  ApiException([this.message, this.prefix, this.url]);
+}
+
+class BadRequestException extends ApiException {
+  BadRequestException([String? message, String? url])
+      : super(message, "Bad Request", url);
+}
+
+class FetchDataException extends ApiException {
+  FetchDataException([String? message, String? url])
+      : super(message, "Unable to process", url);
+}
+
+class UnAuthorizedException extends ApiException {
+  UnAuthorizedException(String? message, String? url)
+      : super(message, "UnAuthorized request", url);
+}
